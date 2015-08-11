@@ -100,10 +100,11 @@ function registerAlt() {
     // store listeners for when each store changes
     const storeListeners = Object.keys(alt.stores).map((storeName) => {
       const store = alt.stores[storeName]
+      const { config } = store.StoreModel
 
       function mapState(state) {
-        return store.config.onSerialize
-          ? store.config.onSerialize(state)
+        return config.onSerialize
+          ? config.onSerialize(state)
           : state
       }
 
